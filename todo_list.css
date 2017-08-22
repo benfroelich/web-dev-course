@@ -1,0 +1,25 @@
+body {
+    background: orange;
+}
+
+#special {
+    color: limegreen;
+    background: white;
+}
+.completed {
+    text-decoration: line-through;
+}
+
+li a {
+    
+}
+
+h1 + ul {
+    border: 3px solid lightgray;
+}
+
+input[type="checkbox"]
+{
+    font-size: 19px;
+    
+}

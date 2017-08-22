@@ -1,0 +1,26 @@
+h1 {
+	/*Named Colors*/
+	color: purple;
+    Background: yellowgreen;
+    border: purple;
+    border-width: 2px;
+    border-style: solid;
+}
+
+li {
+	/*HEXADECIMAL*/
+	color: #F400DD;
+    border: 1px solid white;
+}
+
+h4 {
+	/*RGB*/
+	color: rgb(240, 100, 87);
+}
+
+body{
+/*    background: url(https://i.pinimg.com/originals/ac/f4/0f/acf40f46497b36e089d1079ee81969f5.jpg);*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
+    background: pink;
+}

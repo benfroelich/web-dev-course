@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To Do List</title>
+        <style type="text/css">
+        ul > ul {
+            color: orange;
+        }
+        ul + ul {
+            color: limegreen;
+        }
+        .highlight {
+            color: slategray;
+        }
+        #selected-entry {
+            color: black;
+        }
+        </style>
+    </head>
+    <body>
+        <h1> List </h1>
+        <ul>
+            <li class="head-li">head text 1</li>
+        </ul>
+        <ul>
+            <li>entry 1</li>
+            <ul>
+                <li>entry a</li>
+            </ul>
+            <li class="highlight" id="selected-entry">entry 2</li>
+            <li>entry 3</li>
+            <li>entry 4</li>
+        </ul>
+    </body>
+</html>
