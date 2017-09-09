@@ -1,0 +1,39 @@
+body {
+	border: 20px solid rgb(204, 204, 204);
+	max-width: 700px;
+	width: 80%;
+	/*fixed top and bottom margins, but auto left and right sides*/
+	margin: 20px auto;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+p {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+p.synopsis {
+	border-left: 5px solid rgb(204, 204, 204);
+	padding-left: 5px;
+}
+
+h2 {
+	color: #2c3e50;	
+	font-weight: 700
+}
+
+.date {
+	color: rgb(0, 204, 122);
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	font-size: 1em;
+}
+
+hr.seperator {
+	/*background-color: black;*/
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
+ 	margin-left: 20px;
+ 	margin-right: 20px;
+}
+
+}
