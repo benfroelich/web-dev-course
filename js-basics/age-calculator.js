@@ -18,6 +18,7 @@ for (var year = birthday.getYear(); year > now.getYear(); year++)
 	// leap years have one less day (364) than a normal year (365)
 	var days_in_year = year % 4 ? 365 : 364;
 	days_alive_manual += days_in_year;
+	// i made a change here
 }
 
 birthday.getYear()console.log("You've been alive for " + days_alive + " " + "days!");
