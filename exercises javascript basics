@@ -1,0 +1,11 @@
+exercises javascript basics
+1. 
+100 % 3 
+   99 + 1 -> 1
+
+2.
+("blah" + "blah")[6] -> "a"
+
+3. 
+"hello".length % "hi\\".length
+5 % 3 -> 2
