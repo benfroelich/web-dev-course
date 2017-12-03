@@ -11,14 +11,14 @@ var days_alive_manual = 0;
 var manual_years = now.getYear() - birthday.getYear();
 var manual_months = now.getMonth() - birthday.getMonth();
 var manual_days = now.getDate() - birthday.getDate();
-
+var full_years = now.getYear() - birthday.getYear();
 // add days for each year preceeding this one
-for (var year = birthday.getYear(); year > now.getYear(); year++) 
+for (var year = birthday.getYear(); year < now.getYear(); year++) 
 {
 	// leap years have one less day (364) than a normal year (365)
 	var days_in_year = year % 4 ? 365 : 364;
 	days_alive_manual += days_in_year;
-	// i made a change here
 }
-
-birthday.getYear()console.log("You've been alive for " + days_alive + " " + "days!");
+// for (var month = birthday.getYear(); month > now.getMonth())
+console.log("You've been alive for " + days_alive + " " + "days!");
+console.log("approx " + days_alive_manual);

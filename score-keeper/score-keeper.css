@@ -1,0 +1,20 @@
+.winner {
+	color: red;
+	animation-duration: 2s;
+	animation-name: grow;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes grow {
+  from {
+    font-size: 100%; 
+  }
+  to {
+  	  font-size: 150%;
+  }
+}
+
+#score-display {
+	height: 3em;
+}
