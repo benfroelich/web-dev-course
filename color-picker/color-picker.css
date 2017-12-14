@@ -1,0 +1,19 @@
+body {
+	background-color: #232323;
+}
+.color-tile {
+	width: 30%;
+	background: green;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+}
+#tile-container {
+	margin: 0 auto;
+	max-width: 600px;
+}
+#color-display,
+#status-message,
+h1 {
+	color: white;
+}

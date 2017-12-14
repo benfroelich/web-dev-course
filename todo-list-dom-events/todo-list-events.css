@@ -1,0 +1,6 @@
+.active {
+	color: green;
+}
+.completed {
+	text-decoration: line-through;
+}
