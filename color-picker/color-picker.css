@@ -13,7 +13,14 @@ body {
 	max-width: 600px;
 }
 #color-display,
-#status-message,
 h1 {
 	color: white;
+}
+#menu {
+	background-color: white;
+	height: 30px;
+	text-align: center;
+}
+.selected {
+	background-color: blue;
 }
