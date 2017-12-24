@@ -3,7 +3,7 @@ var easyNumColors = 3;
 var numColors = hardNumColors;
 var colorTiles = document.querySelectorAll(".color-tile");
 var body = document.querySelector("body");
-var bodyColor = window.getComputedStyle(body, null).backgroundColor;
+var h1Color = "steelblue";
 // color chosen for the game as the correct color
 var colors = generateRandomColors(numColors);
 var pickedColor = pickColor();
@@ -73,7 +73,7 @@ function reset()
 	// set up the text
 	winMessage.textContent = "Guess!"
 	resetButton.textContent = "New Colors"
-	assignThemeColor(bodyColor);
+	assignThemeColor(h1Color);
 	colors = generateRandomColors(numColors);
 	pickedColor = pickColor();
 	applyTileColors();
@@ -86,7 +86,6 @@ function assignThemeColor(color)
 	document.querySelectorAll("h1").forEach(function (el) 
 	{
 		el.style.backgroundColor = color;
-		el.style.visibility = "visible";
 	});
 	applyTileColors(color);
 }
@@ -94,7 +93,7 @@ function assignThemeColor(color)
 function applyTileColors(singleColor)
 {
 	// style the background for all tiles and make them visible
-	for(var i = 0; i < colorTiles.length && i < colors.length; i++) 
+	for(var i = 0; i < colorTiles.length; i++) 
 	{
 		// apply all available colors as held in the colors array
 		if(i < colors.length)
@@ -105,7 +104,7 @@ function applyTileColors(singleColor)
 		}
 		else // make all other tiles invisible
 		{
-			colorTiles[i].style.display = "none";
+			colorTiles[i].style.visibility = "hidden";
 		}
 	}
 }
@@ -122,7 +121,7 @@ function generateRandomColors(numColors)
 		arrayOut.push(randomColor());
 	return arrayOut;
 }
-
+// build an string to represent an RGB color
 function randomColor()
 {
 	var color = "rgb(";
