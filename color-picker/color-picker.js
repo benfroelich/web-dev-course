@@ -1,3 +1,4 @@
+var maxColorTiles = 6;
 var colorTiles = document.querySelectorAll(".color-tile");
 var body = document.querySelector("body");
 var h1Color = "steelblue";
@@ -13,8 +14,8 @@ var numColors = Number(difficultySelection[0].value);
 
 // initialize the game
 reset();
-// create event handlers
-for(var i = 0; i < colorTiles.length && i < colors.length; i++) {
+// create event handlers for all tiles
+for(var i = 0; i < maxColorTiles; i++) {
 	// add event listener to check for a match upon clicking
 	colorTiles[i].addEventListener("click", function (event) {
 		if(!won) {
