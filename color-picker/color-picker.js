@@ -1,6 +1,3 @@
-var hardNumColors = 6;
-var easyNumColors = 3;
-var numColors = hardNumColors;
 var colorTiles = document.querySelectorAll(".color-tile");
 var body = document.querySelector("body");
 var h1Color = "steelblue";
@@ -11,8 +8,8 @@ var won = false;
 var colorTitle = document.querySelector("#color-display");
 var winMessage = document.querySelector("#status-message");
 var resetButton = document.getElementById("reset");
-var easyButton = document.getElementById("easy");
-var hardButton = document.getElementById("hard");
+var difficultySelection = document.getElementsByName("difficulty");
+var numColors = Number(difficultySelection[0].value);
 
 // initialize the game
 reset();
@@ -35,28 +32,20 @@ for(var i = 0; i < colorTiles.length && i < colors.length; i++) {
 // call the reset function at page load and also here, 
 // when the button is pressed
 resetButton.addEventListener("click", reset);
-// set up the easy and hard mode listeners
-easyButton.addEventListener("click", function () { 
-	difficultyChange(easyNumColors);
-});
-hardButton.addEventListener("click", function () {
-	difficultyChange(hardNumColors);
-});
-function difficultyChange(newNumColors)
-{
-	if(newNumColors != numColors)
-	{
-		easyButton.classList.toggle("selected");
-		hardButton.classList.toggle("selected");
-	}
-	// if the number of colors was different, or the player already won,
-	// reset the game and apply the new number of colors
-	if(newNumColors != numColors || won)
-	{
-		numColors = newNumColors;
-		reset();
-	}
-}
+// set up the difficulty mode listeners
+for(var i = 0; i < difficultySelection.length; i++) {
+	var radio = difficultySelection[i];
+	radio.addEventListener("click", function(radio) {
+		var newNumColors = radio.target.value;
+		// if the number of colors was different, or the player already won,
+		// reset the game and apply the new number of colors
+		if(newNumColors != numColors || won)
+		{
+			numColors = newNumColors;
+			reset();
+		}
+	});
+};
 // support functions
 function setWon()
 {

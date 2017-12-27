@@ -37,35 +37,75 @@ h1 {
 h1 > p {
 	margin: 0;
 }
-#menu {
+#color-display {
+	font-size: 1.5em;
+}
+/* menu bar*/
+/*#color-message-div {
+	width: 20%;
+}*/
+.menu {
 	background-color: white;
-	height: 30px;
+	/*height: 30px;*/
 	text-align: center;
+}
+.menu div {
+	display: inline-block;
+}
+.menu label, 
+.menu button,
+.menu span,
+.menu li,
+.menu ul,
+.menu div {
+	display: inline-block;
+	text-align: center;
+	text-transform: uppercase;
+	border-style: none;
+	font-size: inherit;
+	height: 100%;
 	color: steelblue;
+	padding: 0;
+	margin: 0;
+}
+.menu button, .menu label {
+	transition: all 0.6s;
 }
 .selected {
 	background-color: steelblue;
 	color: white;
 }
-#color-display {
-	font-size: 1.5em;
+.menu input[type="radio"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 }
-button {
-	text-transform: uppercase;
-	border-style: none;
-	height: 100%;
-	font-size: inherit;
-	color: steelblue;
-	transition: all 0.6	s;
-}
-button:hover {
+.menu input[type="radio"]:checked + label, 
+.menu label:hover, 
+.menu button:hover {
 	background-color: steelblue;
 	color: white;
 }
-button:focus {
+label, button:focus {
 	outline: none;
 }
-#status-message {
-	display: inline-block;
+#status-message-div {
 	width: 20%;
 }
+/* difficuty selection*/
+.difficulty li {
+	display: inline;
+	height: 100%;
+}
+/*.difficulty li {
+	float: left;
+	position: relative;
+	list-style-type: none;	
+	height: 100%;
+}
+.difficulty label, .difficulty input {
+    display: block;
+    position: absolute;
+	float: left;
+    position: relative;
+}*/

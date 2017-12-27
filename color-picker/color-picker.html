@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Color Picker Challenge</title>
+	<title>Color color-picker Challenge</title>
 	<link rel="stylesheet" type="text/css" href="color-picker.css">
 </head>
 <body>
@@ -10,11 +10,35 @@
 		<p><span id="color-display"> RGB</span></p>
 		<p> Color Game</p>
 	</h1>
-	<div id="menu">
-		<button id="reset"></button>
-		<span id="status-message"></span>
-		<button id="easy">Easy</button>
-		<button id="hard" class="selected">Hard</button>
+		<div class="menu">
+			<!-- reset button -->
+			<div>
+				<button id="reset"></button>
+			</div>
+			<!-- status message -->
+			<div id="status-message-div">
+				<span id="status-message"></span>
+		  	</div>
+		  	<!-- difficulty selection -->
+		  	<div>
+		  		<ul class="difficulty">
+			  	<li>
+			  		<input type="radio" id="difficultyChoice0"
+			    		name="difficulty" value="4" checked>
+			   		<label for="difficultyChoice0">Moderate</label>
+			   	</li>
+			  	<li>
+			   		<input type="radio" id="difficultyChoice1"
+			    		name="difficulty" value="6">
+				   	<label for="difficultyChoice1">Hard</label>
+			   	</li>
+			  	<li>
+				   	<input type="radio" id="difficultyChoice2"
+				    	name="difficulty" value="2">
+				   	<label for="difficultyChoice2">Easy</label>
+		   	</li>
+		  	</ul>
+		  </div>
 	</div>
 	<!-- clickable color tiles -->
 	<div id="tile-container">
