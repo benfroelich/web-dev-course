@@ -46,7 +46,7 @@ h1 > p {
 }*/
 .menu {
 	background-color: white;
-	/*height: 30px;*/
+	/*height: 30px; not working*/
 	text-align: center;
 }
 .menu div {

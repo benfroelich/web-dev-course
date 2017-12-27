@@ -1,11 +1,12 @@
 var maxColorTiles = 6;
+var won = false;
+var h1Color = "steelblue";
+
 var colorTiles = document.querySelectorAll(".color-tile");
 var body = document.querySelector("body");
-var h1Color = "steelblue";
 // color chosen for the game as the correct color
 var colors = generateRandomColors(numColors);
 var pickedColor = pickColor();
-var won = false;
 var colorTitle = document.querySelector("#color-display");
 var winMessage = document.querySelector("#status-message");
 var resetButton = document.getElementById("reset");
@@ -15,7 +16,7 @@ var numColors = Number(difficultySelection[0].value);
 // initialize the game
 reset();
 // create event handlers for all tiles
-for(var i = 0; i < maxColorTiles; i++) {
+for(var i = 0; i < colorTiles.length  ; i++) {
 	// add event listener to check for a match upon clicking
 	colorTiles[i].addEventListener("click", function (event) {
 		if(!won) {
@@ -47,6 +48,7 @@ for(var i = 0; i < difficultySelection.length; i++) {
 		}
 	});
 };
+
 // support functions
 function setWon()
 {
