@@ -1,0 +1,116 @@
+/*body background*/
+body {
+background: 
+	radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent),
+	radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent) 50px 50px,
+	linear-gradient(#A8B1BB 8px, transparent 8px) 0 -4px,
+	linear-gradient(90deg, #A8B1BB 8px, transparent 8px) -4px 0;
+	background-color: slategray;
+	background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
+}
+
+/*app container styling*/
+div#app-container {
+	background: khaki;
+	min-width: 400px;
+	max-width: 500px;
+	border: 1px solid black;
+	margin: 0 auto;
+}
+
+/*todo items that have been marked as done, but not yet removed*/
+.done-list-item {
+	text-decoration: line-through;
+	color: gray;
+}
+
+ul#todo-list {
+	list-style: none;
+}
+
+/* todo list entry styling*/
+ul#todo-list li {
+	/* make the curson a pointer over todo items so it is apparent that
+	   they can be clicked */
+	cursor: pointer;
+	/* add space between the delete icon and the text of the todo*/
+	display: flex;
+	justify-content: space-between;
+}
+
+ul#todo-list li span{
+	width: 0%;
+	-webkit-transition: width 1s ease-in-out;
+	-moz-transition: width 1s ease-in-out;
+	-o-transition: width 1s ease-in-out;
+	transition: width 1s ease-in-out;
+}
+
+/*when hovering over a todo entry, make the delete icon appear*/
+ul#todo-list li:hover span {
+    width: 5%;
+}
+
+/*try this later?*/
+/*.stretchLeft{
+	animation-name: stretchLeft;
+	-webkit-animation-name: stretchLeft;	
+
+	animation-duration: 1.5s;	
+	-webkit-animation-duration: 1.5s;
+
+	animation-timing-function: ease-out;	
+	-webkit-animation-timing-function: ease-out;	
+
+	transform-origin: 100% 0%;
+	-ms-transform-origin: 100% 0%;
+	-webkit-transform-origin: 100% 0%; 
+}
+
+@keyframes stretchLeft {
+	0% {
+		transform: scaleX(0.3);
+	}
+	40% {
+		transform: scaleX(1.02);
+	}
+	60% {
+		transform: scaleX(0.98);
+	}
+	80% {
+		transform: scaleX(1.01);
+	}
+	100% {
+		transform: scaleX(0.98);
+	}				
+	80% {
+		transform: scaleX(1.01);
+	}
+	100% {
+		transform: scaleX(1);
+	}							
+}
+
+@-webkit-keyframes stretchLeft {
+	0% {
+		-webkit-transform: scaleX(0.3);
+	}
+	40% {
+		-webkit-transform: scaleX(1.02);
+	}
+	60% {
+		-webkit-transform: scaleX(0.98);
+	}
+	80% {
+		-webkit-transform: scaleX(1.01);
+	}
+	100% {
+		-webkit-transform: scaleX(0.98);
+	}				
+	80% {
+		-webkit-transform: scaleX(1.01);
+	}
+	100% {
+		-webkit-transform: scaleX(1);
+	}		
+}*/

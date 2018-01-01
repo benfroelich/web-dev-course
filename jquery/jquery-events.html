@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery methods</title>
+	<!-- add jQuery -->
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+	  <style type="text/css">
+	  	
+	  	.correct {
+	  		color: green;
+	  	}
+
+	  	.wrong {
+	  		color: red;
+	  		text-decoration: line-through;
+	  	}
+
+	  	.winner {
+	  		color: purple;
+	  		font-size: 2em;
+	  	}
+
+	  	img {
+	  		width: 200px;
+	  	}
+
+	  	div.fadeable {
+	  		background-color: pink;
+	  		width: 50px;
+	  		height: 50px;
+	  		margin: 5px;
+			display:inline-block;	  	
+		}
+	  </style>
+</head>
+<body>
+
+	<h1>jQuery events demo page</h1>
+
+	<div class="fadeable">Don't fade Me!</div>
+	<div class="fadeable">Don't fade Me!</div>
+	<div class="fadeable">Don't fade Me!</div>
+
+	<div>
+		<input type="text">
+
+		<button>Don't Click Me!</button>
+		<button>Seriously don't click me!</button>
+		<button>FINAL WARNING!</button>
+
+		<button id="fade">Click to fade them out and remove from the DOM!</button>
+
+		<button id="fade-toggle">Click to toggle fade</button>
+		<button id="fade-slide">Click to toggle slide</button>
+	</div>
+	<!-- include our own script -->
+	<script type="text/javascript" src="jquery-events.js"></script>
+</body>
+</html>
