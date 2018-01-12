@@ -10,8 +10,8 @@ $("ul#todo-list").on("click", "li", function() {
 	$(this).toggleClass("done-list-item");
 });
 
-// set up delete button to dynamically bind to all delete spans
-$("ul#todo-list").on("click", "li span", function(event) {
+// set up delete icon to dynamically bind to all delete spans
+$("ul#todo-list").on("click", "li span.icon", function(event) {
 	// stop propagation here to prevent other listeners
 	// from triggering, including a listener on the 
 	// parent li that marks it as complete
@@ -30,13 +30,16 @@ $("#add-item-input").on("keypress", function() {
 		$(this).val("");
 	} 
 });
-
+// add a todo item to the todo list by building a list entry
+// with a span with the delet button. Add the todo to the beginning
 function addTodo(text) {
-	var html = "<li>" + text + " <span>X</span></li>";
+	var html = "<li><span class=\"todo-text\">" + text + "</span> <span class=\"icon\"><i class=\"fas fa-trash-alt\"></i></span></li>";
 	$("ul#todo-list").prepend(html);
 }
 
 $("#add-item-toggle").on("click", function() {
-	$("#add-item-input").toggle();
+	$("#add-item-input").slideToggle(150);
+	$(this).toggleClass("fa-minus");
+	$(this).toggleClass("fa-plus");
 });
 

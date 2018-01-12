@@ -2,22 +2,30 @@
 <html>
 <head>
 	<title>do2</title>
+	<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/css/do2.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 	<script type="text/javascript" src="assets/js/lib/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
 <!-- todo list container -->
 <div id="app-container">
-	<div id="list-header">
-		<h1>todo list</h1>
-		<button id="add-item-toggle">+</button>
-	</div>
+	<h1><span>todo list</span> <i class="fas fa-minus" id="add-item-toggle"></i></h1>
 	<input id="add-item-input" type="text" placeholder="Add New todo and press Enter">
 	<ul id="todo-list">
-		<li>neature walk <span>X</span></li>
-		<li>isn't that neat? <span>X</span></li>
-		<li>that's pretty neat! <span>X</span></li>
+		<li>
+			<span class="todo-text">neat! </span>
+			<span class="icon"><i class="fas fa-trash-alt"></i></span>
+		</li>
+		<li>
+			<span class="todo-text">isn't that neat? </span>
+			<span class="icon"><i class="fas fa-trash-alt"></i></span>
+		</li>
+		<li>
+			<span class="todo-text">that's pretty neat! </span> 
+			<span class="icon"><i class="fas fa-trash-alt"></i></span>
+		</li>
 	</ul>
 </div>
 

@@ -1,31 +1,79 @@
 /*body background*/
 body {
-background: 
-	radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent),
-	radial-gradient(circle, transparent 20%, slategray 20%, slategray 80%, transparent 80%, transparent) 50px 50px,
-	linear-gradient(#A8B1BB 8px, transparent 8px) 0 -4px,
-	linear-gradient(90deg, #A8B1BB 8px, transparent 8px) -4px 0;
-	background-color: slategray;
-	background-size:100px 100px, 100px 100px, 50px 50px, 50px 50px;
+  background: linear-gradient(90deg, lightgreen, white);
+  font-family: 'Roboto', sans-serif;
 }
 
-/*app container styling*/
+h1 {
+	/* add space between the TODO LIST span and the menu hide toggle */
+	display: flex;
+	justify-content: space-between;
+
+	background: #2980b9;
+	color: white;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: normal;
+}
+
+/* pad the individial elements in the h1 to allow the clickable area 
+ of the icon to cover more area */
+h1 * {
+	padding: 10px 20px;
+}
+
+button {
+	border: none;
+    background-color: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+input {
+	font-size: 18px;
+	background-color: #f7f7f7;
+	width: 100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 13px 13px 13px 20px;
+	border: none;
+	height: 50px;
+	/* border to prevent remove gap between input and list*/
+	border: 3px solid rgba(0, 0, 0, 0);
+	border-color:;
+}
+
+input:focus {
+	background: white;
+	border-color: #2980b9;
+	outline: none;
+}
+
 div#app-container {
-	background: khaki;
-	min-width: 400px;
-	max-width: 500px;
-	border: 1px solid black;
-	margin: 0 auto;
-}
-
-/*todo items that have been marked as done, but not yet removed*/
-.done-list-item {
-	text-decoration: line-through;
-	color: gray;
+	background: #f7f7f7;
+	min-width: 300px;
+	max-width: 400px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	margin: 100px auto;
 }
 
 ul#todo-list {
+	margin: 0;
+	padding: 0;
 	list-style: none;
+}
+
+/*todo items that have been marked as done, but not yet removed*/
+ul#todo-list li.done-list-item span.todo-text {
+	text-decoration: line-through;
+	color: #888;
+}
+ul#todo-list li.done-list-item span.icon {
+	text-decoration: none;
+	color: white;
 }
 
 /* todo list entry styling*/
@@ -33,84 +81,42 @@ ul#todo-list li {
 	/* make the curson a pointer over todo items so it is apparent that
 	   they can be clicked */
 	cursor: pointer;
+
 	/* add space between the delete icon and the text of the todo*/
 	display: flex;
 	justify-content: space-between;
+
+	background: white;
+	/*height: 40px;*/
+	line-height: 40px;
+	padding-left: 20px;
+	color: #555;
 }
 
-ul#todo-list li span{
-	width: 0%;
-	-webkit-transition: width 1s ease-in-out;
-	-moz-transition: width 1s ease-in-out;
-	-o-transition: width 1s ease-in-out;
-	transition: width 1s ease-in-out;
+ul#todo-list li:nth-child(even) {
+	background: #f7f7f7;
+}
+
+ul#todo-list li span.icon {
+	/* align the icon in the center of the span*/
+	display: inline-flex;
+    align-items: center;
+
+    justify-content: center;
+	background-color: red;
+	color: white;
+
+	/* hide the icon when the span has 0 width and the icon is outside the app container div */
+	overflow-x: hidden;
+	width: 0;
+
+	-webkit-transition: width 0.2s ease-in-out;
+	-moz-transition: width 0.2s ease-in-out;
+	-o-transition: width 0.2s ease-in-out;
+	transition: width 0.2s ease-in-out;
 }
 
 /*when hovering over a todo entry, make the delete icon appear*/
-ul#todo-list li:hover span {
-    width: 5%;
+ul#todo-list li:hover span.icon {
+    width: 40px;
 }
-
-/*try this later?*/
-/*.stretchLeft{
-	animation-name: stretchLeft;
-	-webkit-animation-name: stretchLeft;	
-
-	animation-duration: 1.5s;	
-	-webkit-animation-duration: 1.5s;
-
-	animation-timing-function: ease-out;	
-	-webkit-animation-timing-function: ease-out;	
-
-	transform-origin: 100% 0%;
-	-ms-transform-origin: 100% 0%;
-	-webkit-transform-origin: 100% 0%; 
-}
-
-@keyframes stretchLeft {
-	0% {
-		transform: scaleX(0.3);
-	}
-	40% {
-		transform: scaleX(1.02);
-	}
-	60% {
-		transform: scaleX(0.98);
-	}
-	80% {
-		transform: scaleX(1.01);
-	}
-	100% {
-		transform: scaleX(0.98);
-	}				
-	80% {
-		transform: scaleX(1.01);
-	}
-	100% {
-		transform: scaleX(1);
-	}							
-}
-
-@-webkit-keyframes stretchLeft {
-	0% {
-		-webkit-transform: scaleX(0.3);
-	}
-	40% {
-		-webkit-transform: scaleX(1.02);
-	}
-	60% {
-		-webkit-transform: scaleX(0.98);
-	}
-	80% {
-		-webkit-transform: scaleX(1.01);
-	}
-	100% {
-		-webkit-transform: scaleX(0.98);
-	}				
-	80% {
-		-webkit-transform: scaleX(1.01);
-	}
-	100% {
-		-webkit-transform: scaleX(1);
-	}		
-}*/
