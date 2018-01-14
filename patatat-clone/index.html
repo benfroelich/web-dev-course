@@ -4,12 +4,43 @@
 	<title>patatat clone</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/patatat-clone.css">
 	<script type="text/javascript" src="assets/js/lib/paperjs/dist/paper-full.js"></script>
- 	<script type="text/paperscript" canvas="main-canvas" src="assets/js/patatat-clone-paperscript.js"></script>
-<!-- 	<script type="text/javascript" src="assets/js/patatat-clone.js"></script> 
- --><!-- 	<script type="text/paperscript" canvas="main-canvas">
-		var myCircle = new Path.Circle(new Point(100, 70), 50);
-		myCircle.fillColor = "black";
-	</script> -->
+<!--  	<script type="text/paperscript" canvas="main-canvas" src="assets/js/patatat-clone-paperscript.js"></script>--> 	
+ 	<!-- <script type="text/paperscript" canvas="main-canvas"> -->
+ 	<script type="text/paperscript" canvas="main-canvas">
+ 		//var circles = new Array();
+ 		var numX = 10;
+ 		var numY = 10;
+ 		var spacingX = 100;
+ 		var spacingY = 100;
+ 		var radius = 8;
+ 		var circleColor = "aquamarine";
+
+ 		for(x = 0; x < numX; x++) {
+ 			//circles[x] = new Array();
+ 			for(y = 0; y < numY; y++) {
+ 				var temporaryCircle = new Path.Circle(new Point(x * spacingX, y * spacingY), radius);
+ 				temporaryCircle.fillColor = "rgba(255, " + y*x*255/(numY*numX) + ", 255, " + (1.0 - y/numY) + ")";
+ 				//circles[x][y] = temporaryCircle;
+ 			}
+ 		} 		
+
+ 		// // dissapearing circle
+ 		// var r = 100;
+ 		// var circleIntervalHandle = setInterval(function ()
+ 		// {
+ 		// 	myCircle.remove();
+ 		// 	myCircle = new Path.Circle(new Point(100, 70), r);
+ 		// 	myCircle.fillColor = "white"
+ 		// 	r -= 3;
+ 		// 	if(r < 1) 
+ 		// 	{
+ 		// 		clearInterval(circleIntervalHandle);
+ 		// 		myCircle.remove();
+ 		// 	}
+ 		// }, 15);
+
+ 	</script>
+<!-- 	<script type="text/javascript" src="assets/js/patatat-clone.js"></script> -->
 </head>
 <body>
 	<canvas id="main-canvas"></canvas>

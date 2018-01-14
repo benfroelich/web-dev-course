@@ -18,7 +18,7 @@ var circleIntervalHandle = setInterval(function ()
 {
 	myCircle.remove();
 	myCircle = new Path.Circle(new Point(100, 70), r);
-	myCircle.fillColor = "green"
+	myCircle.fillColor = "white"
 	r -= 3;
 	if(r < 1) 
 	{
