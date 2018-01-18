@@ -4,9 +4,9 @@
 	<title>patatat clone</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/patatat-clone.css">
 	<script type="text/javascript" src="assets/js/lib/paperjs/dist/paper-full.js"></script>
-<!--  	<script type="text/paperscript" canvas="main-canvas" src="assets/js/patatat-clone-paperscript.js"></script>--> 	
- 	<!-- <script type="text/paperscript" canvas="main-canvas"> -->
+  	<!-- <script type="text/paperscript" canvas="main-canvas" src="assets/js/patatat-clone-paperscript.js"></script> 	 -->
  	<script type="text/paperscript" canvas="main-canvas">
+ 	<script type="text/javascript" canvas="main-canvas">
  		//var circles = new Array();
  		var numX = 10;
  		var numY = 10;
@@ -15,32 +15,40 @@
  		var radius = 8;
  		var circleColor = "aquamarine";
 
- 		for(x = 0; x < numX; x++) {
- 			//circles[x] = new Array();
- 			for(y = 0; y < numY; y++) {
- 				var temporaryCircle = new Path.Circle(new Point(x * spacingX, y * spacingY), radius);
- 				temporaryCircle.fillColor = "rgba(255, " + y*x*255/(numY*numX) + ", 255, " + (1.0 - y/numY) + ")";
- 				//circles[x][y] = temporaryCircle;
- 			}
- 		} 		
+ 		// key - keyboard button to describe
+ 		// sound - sound to play when pressed
+ 		// colorFunction [optional] - 
+ 		function KeyEvent(key, sound, colorFunction) {
+ 			this.key = key;
+ 			this.sound = sound;
 
- 		// // dissapearing circle
- 		// var r = 100;
- 		// var circleIntervalHandle = setInterval(function ()
- 		// {
- 		// 	myCircle.remove();
- 		// 	myCircle = new Path.Circle(new Point(100, 70), r);
- 		// 	myCircle.fillColor = "white"
- 		// 	r -= 3;
- 		// 	if(r < 1) 
- 		// 	{
- 		// 		clearInterval(circleIntervalHandle);
- 		// 		myCircle.remove();
- 		// 	}
- 		// }, 15);
+ 			if(colorFunction !== undefined) 
+ 				this.colorFunction = colorFunction;
+ 			else 
+ 				this.colorFunction = function () {
+ 					alert("default color function");
+ 				}
+ 		}
+ 		KeyEvent.pathToAudio = "assets/media/sounds/";
+
+ 		function onKeyDown(event) {
+ 			center = new Point.random() * view.size;
+ 			var disappearingCircle = new Path.Circle(center, 50);
+ 			// dissapearing circle
+ 			var circleIntervalHandle = setInterval(function ()
+ 			{
+ 				disappearingCircle.scale(0.9);
+ 				disappearingCircle.fillColor = "white"
+ 				// once the circle has reduced to < 1 pixel in area, completely remove it
+ 				if(disappearingCircle.area < 1) 
+ 				{
+ 					clearInterval(circleIntervalHandle);
+ 					disappearingCircle.remove();
+ 				}
+ 			}, 15);
+ 		}
 
  	</script>
-<!-- 	<script type="text/javascript" src="assets/js/patatat-clone.js"></script> -->
 </head>
 <body>
 	<canvas id="main-canvas"></canvas>
