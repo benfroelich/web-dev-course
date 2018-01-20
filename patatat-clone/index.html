@@ -4,9 +4,10 @@
 	<title>patatat clone</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/patatat-clone.css">
 	<script type="text/javascript" src="assets/js/lib/paperjs/dist/paper-full.js"></script>
+	<script src="assets/js/lib/howler.js/dist/howler.js"></script>
   	<!-- <script type="text/paperscript" canvas="main-canvas" src="assets/js/patatat-clone-paperscript.js"></script> 	 -->
  	<script type="text/paperscript" canvas="main-canvas">
- 	<script type="text/javascript" canvas="main-canvas">
+ 	<!-- <script type="text/javascript" canvas="main-canvas"> -->
  		//var circles = new Array();
  		var numX = 10;
  		var numY = 10;
@@ -15,30 +16,39 @@
  		var radius = 8;
  		var circleColor = "aquamarine";
 
- 		// key - keyboard button to describe
+ 		var KeyEvents = [];
+
  		// sound - sound to play when pressed
  		// colorFunction [optional] - 
- 		function KeyEvent(key, sound, colorFunction) {
- 			this.key = key;
- 			this.sound = sound;
+ 		function KeyEvent(sound, colorFunction) {
+ 			this.sound = new Howl({
+ 				src: [this.pathToAudio + sound]
+ 			});
 
  			if(colorFunction !== undefined) 
+ 			{
  				this.colorFunction = colorFunction;
+ 			}
  			else 
- 				this.colorFunction = function () {
+ 			{
+ 				this.colorFunction = (function () {
  					alert("default color function");
- 				}
+ 				});
+ 			}
  		}
- 		KeyEvent.pathToAudio = "assets/media/sounds/";
+ 		KeyEvent.prototype.pathToAudio = "assets/media/sounds/";
 
- 		function onKeyDown(event) {
+ 		KeyEvent.prototype.trigger = function () {
+ 			// play audio
+ 			this.sound.play();
+
  			center = new Point.random() * view.size;
- 			var disappearingCircle = new Path.Circle(center, 50);
  			// dissapearing circle
+ 			var disappearingCircle = new Path.Circle(center, 50);
  			var circleIntervalHandle = setInterval(function ()
  			{
  				disappearingCircle.scale(0.9);
- 				disappearingCircle.fillColor = "white"
+ 				disappearingCircle.fillColor = "white";
  				// once the circle has reduced to < 1 pixel in area, completely remove it
  				if(disappearingCircle.area < 1) 
  				{
@@ -48,6 +58,17 @@
  			}, 15);
  		}
 
+ 		KeyEvents["a"] = (new KeyEvent("bubbles.mp3"));
+ 		KeyEvents["o"] = (new KeyEvent("clay.mp3"));
+ 		KeyEvents["e"] = (new KeyEvent("confetti.mp3"));
+
+ 		function checkKeyEvents(event) {
+ 			if(event.key in KeyEvents)
+ 				KeyEvents[event.key].trigger();
+ 		}
+ 		function onKeyDown(event) {
+ 			checkKeyEvents(event);
+ 		}
  	</script>
 </head>
 <body>
