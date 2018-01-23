@@ -16,10 +16,21 @@
  		var radius = 8;
  		var circleColor = "aquamarine";
 
+ 		// maps keys to animations and sounds
  		var KeyEvents = [];
+ 		KeyEvent.prototype.pathToAudio = "assets/media/sounds/";
+ 		KeyEvents["a"] = (new KeyEvent("bubbles.mp3"));
+ 		KeyEvents["o"] = (new KeyEvent("clay.mp3"));
+ 		KeyEvents["e"] = (new KeyEvent("confetti.mp3"));
+ 		KeyEvents["u"] = (new KeyEvent("snore-1.mp3"));
+ 		KeyEvents["i"] = (new KeyEvent("snore-2.mp3"));
+ 		KeyEvents["d"] = (new KeyEvent("fart-03.mp3"));
+
+ 		// store a list of currently running animations
+ 		var activeAnimations = [];
 
  		// sound - sound to play when pressed
- 		// colorFunction [optional] - 
+ 		// colorFunction [optional] - TBD
  		function KeyEvent(sound, colorFunction) {
  			this.sound = new Howl({
  				src: [this.pathToAudio + sound]
@@ -36,41 +47,37 @@
  				});
  			}
  		}
- 		KeyEvent.prototype.pathToAudio = "assets/media/sounds/";
 
- 		KeyEvent.prototype.trigger = function () {
+ 		// create a new animation and play the sound
+ 		KeyEvent.prototype.spawn = function () {
  			// play audio
  			this.sound.play();
+ 			// create animation
+ 			activeAnimations.push(new Path.Circle({
+				center: new Point.random() * view.size,
+				radius: 50,
+				fillColor: 'red'
+			}));	
+ 		}
 
- 			center = new Point.random() * view.size;
- 			// dissapearing circle
- 			var disappearingCircle = new Path.Circle(center, 50);
- 			var circleIntervalHandle = setInterval(function ()
- 			{
- 				disappearingCircle.scale(0.9);
- 				disappearingCircle.fillColor = "white";
+ 		function onFrame(event) {
+ 			for (var i = activeAnimations.length - 1; i >= 0; i--) {
+ 				activeAnimations[i].scale(0.92);
+ 				activeAnimations[i].fillColor.hue += 2;
  				// once the circle has reduced to < 1 pixel in area, completely remove it
- 				if(disappearingCircle.area < 1) 
+ 				if(activeAnimations[i].area < 1) 
  				{
- 					clearInterval(circleIntervalHandle);
- 					disappearingCircle.remove();
+ 					// remove the element from display and list
+ 					activeAnimations[i].remove();
+ 					activeAnimations.splice(i, 1);
  				}
- 			}, 15);
+  			}
  		}
 
- 		KeyEvents["a"] = (new KeyEvent("bubbles.mp3"));
- 		KeyEvents["o"] = (new KeyEvent("clay.mp3"));
- 		KeyEvents["e"] = (new KeyEvent("confetti.mp3"));
- 		KeyEvents["u"] = (new KeyEvent("snore-1.mp3"));
- 		KeyEvents["i"] = (new KeyEvent("snore-2.mp3"));
- 		KeyEvents["d"] = (new KeyEvent("fart-03.mp3"));
-
- 		function checkKeyEvents(event) {
- 			if(event.key in KeyEvents)
- 				KeyEvents[event.key].trigger();
- 		}
  		function onKeyDown(event) {
- 			checkKeyEvents(event);
+ 			// when a key is pressed, screen it for a sound and animation enabled key
+ 			if(event.key in KeyEvents)
+ 				KeyEvents[event.key].spawn();
  		}
  	</script>
 </head>
