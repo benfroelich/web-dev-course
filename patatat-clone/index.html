@@ -53,16 +53,18 @@
  			// play audio
  			this.sound.play();
  			// create animation
- 			activeAnimations.push(new Path.Circle({
-				center: new Point.random() * view.size,
-				radius: 50,
-				fillColor: 'red'
+ 			activeAnimations.push(new Path.Rectangle({
+				point: new Point.random() * view.size,
+				size: [75, 75],
+				strokeColor: 'black',
+				fillColor: "red"
 			}));	
  		}
 
  		function onFrame(event) {
  			for (var i = activeAnimations.length - 1; i >= 0; i--) {
  				activeAnimations[i].scale(0.92);
+ 				activeAnimations[i].rotate(2.5);
  				activeAnimations[i].fillColor.hue += 2;
  				// once the circle has reduced to < 1 pixel in area, completely remove it
  				if(activeAnimations[i].area < 1) 
