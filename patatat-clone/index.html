@@ -8,45 +8,58 @@
   	<!-- <script type="text/paperscript" canvas="main-canvas" src="assets/js/patatat-clone-paperscript.js"></script> 	 -->
  	<script type="text/paperscript" canvas="main-canvas">
  	<!-- <script type="text/javascript" canvas="main-canvas"> -->
- 		//var circles = new Array();
- 		var numX = 10;
- 		var numY = 10;
- 		var spacingX = 100;
- 		var spacingY = 100;
- 		var radius = 8;
- 		var circleColor = "aquamarine";
-
- 		// maps keys to animations and sounds
- 		var KeyEvents = [];
- 		KeyEvent.prototype.pathToAudio = "assets/media/sounds/";
- 		KeyEvents["a"] = (new KeyEvent("bubbles.mp3"));
- 		KeyEvents["o"] = (new KeyEvent("clay.mp3"));
- 		KeyEvents["e"] = (new KeyEvent("confetti.mp3"));
- 		KeyEvents["u"] = (new KeyEvent("snore-1.mp3"));
- 		KeyEvents["i"] = (new KeyEvent("snore-2.mp3"));
- 		KeyEvents["d"] = (new KeyEvent("fart-03.mp3"));
 
  		// store a list of currently running animations
  		var activeAnimations = [];
 
+ 		function randomColor() {
+ 			var red = Math.round(Math.random() * 255);
+ 			var green = Math.round(Math.random() * 255);
+ 			var blue = Math.round(Math.random() * 255);
+ 			var color = "rgb(" + String(red) + ", " + String(green) + ", " + String(blue) + ")";
+ 			return color;
+ 		}
+
  		// sound - sound to play when pressed
- 		// colorFunction [optional] - TBD
- 		function KeyEvent(sound, colorFunction) {
+ 		// color - initial color, 
+ 		function KeyEvent(sound, color) {
+ 			console.log(color);
+ 			//this.color = typeof color !== 'undefined' ? color : randomColor();
+ 			this.color = randomColor();
  			this.sound = new Howl({
  				src: [this.pathToAudio + sound]
  			});
-
- 			if(colorFunction !== undefined) 
- 			{
- 				this.colorFunction = colorFunction;
- 			}
- 			else 
- 			{
- 				this.colorFunction = (function () {
- 					alert("default color function");
- 				});
- 			}
  		}
+ 		// maps keys to animations and sounds
+ 		var KeyEvents = [];
+ 		var temporaryKeyEventMap;
+ 		KeyEvent.prototype.pathToAudio = "assets/media/sounds/";
+ 		KeyEvents["a"] = (new KeyEvent("bubbles.mp3", "orange"));
+ 		KeyEvents["o"] = (new KeyEvent("clay.mp3", "rgb(255, 0, 0)"));
+ 		KeyEvents["e"] = (new KeyEvent("confetti.mp3", "blue"));
+ 		KeyEvents["u"] = (new KeyEvent("snore-1.mp3", "pink"));
+ 		KeyEvents["i"] = (new KeyEvent("snore-2.mp3", "red"));
+ 		KeyEvents["d"] = (new KeyEvent("fart-03.mp3", "brown"));
+ 		KeyEvents["h"] = (new KeyEvent("flash-1.mp3", "grey"));
+ 		KeyEvents["t"] = (new KeyEvent("flash-2.mp3", "rgb(255, 150, 0)"));
+ 		KeyEvents["n"] = (new KeyEvent("flash-3.mp3", "rgb(255, 0, 200)")); 		
+ 		KeyEvents["s"] = (new KeyEvent("glimmer.mp3"));
+ 		KeyEvents["p"] = (new KeyEvent("moon.mp3"));
+ 		KeyEvents["y"] = (new KeyEvent("pinwheel.mp3"));
+ 		KeyEvents["f"] = (new KeyEvent("piston-1.mp3"));
+ 		KeyEvents["g"] = (new KeyEvent("piston-2.mp3"));
+ 		KeyEvents["c"] = (new KeyEvent("piston-3.mp3"));
+ 		KeyEvents["r"] = (new KeyEvent("prism-1.mp3"));
+ 		KeyEvents["l"] = (new KeyEvent("prism-2.mp3"));
+ 		KeyEvents["q"] = (new KeyEvent("prism-3.mp3"));
+ 		KeyEvents["j"] = (new KeyEvent("snore-1.mp3"));
+ 		KeyEvents["k"] = (new KeyEvent("snore-2.mp3"));
+ 		KeyEvents["x"] = (new KeyEvent("splits.mp3"));
+ 		KeyEvents["b"] = (new KeyEvent("squiggle.mp3"));
+ 		KeyEvents["m"] = (new KeyEvent("strike.mp3"));
+ 		KeyEvents["w"] = (new KeyEvent("suspension.mp3"));
+ 		KeyEvents["v"] = (new KeyEvent("timer.mp3"));
+ 		KeyEvents["z"] = (new KeyEvent("ufo.mp3"));
 
  		// create a new animation and play the sound
  		KeyEvent.prototype.spawn = function () {
@@ -56,20 +69,18 @@
  			activeAnimations.push(new Path.Rectangle({
 				point: new Point.random() * view.size,
 				size: [75, 75],
-				strokeColor: 'black',
-				fillColor: "red"
+				fillColor: this.color
 			}));	
  		}
-
+ 		// update all running animations from this paper.js callback
  		function onFrame(event) {
  			for (var i = activeAnimations.length - 1; i >= 0; i--) {
  				activeAnimations[i].scale(0.92);
  				activeAnimations[i].rotate(2.5);
  				activeAnimations[i].fillColor.hue += 2;
- 				// once the circle has reduced to < 1 pixel in area, completely remove it
+ 				// once the circle has reduced to < 1 pixel in area, completely remove it from the list and display
  				if(activeAnimations[i].area < 1) 
  				{
- 					// remove the element from display and list
  					activeAnimations[i].remove();
  					activeAnimations.splice(i, 1);
  				}
